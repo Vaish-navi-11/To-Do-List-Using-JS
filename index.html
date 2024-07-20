@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO DO LIST USING JS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="content">
+        <h2>TO DO LIST</h2>
+        <div class="box">
+            <input type="text" id="taskInput" placeholder="Enter your task here...">
+            <button type="menu" id="addelement" onclick="add()">Add</button>
+            <button type="menu" id="delelement" onclick="deleteTask()">Delete</button>
+            <div class="tasklist" >
+
+            </div>
+        </div>
+        <script>
+            let taskList = [];
+            function add() {
+                let task = document.getElementById('taskInput').value;
+                taskList.push(task);
+                document.getElementById('taskInput').value = '';
+                displayTasks();
+            }
+            function displayTasks() {
+                let taskListDiv = document.querySelector('.tasklist');
+                taskListDiv.innerHTML = '';
+                for (let i = 0; i < taskList.length; i++) {
+                    let taskDiv = document.createElement('div');
+                    taskDiv.textContent = taskList[i];
+                    taskListDiv.appendChild(taskDiv);
+            }
+            }
+            function deleteTask(index) {
+                taskList.splice(index, 1);
+                displayTasks();
+            }
+            document.querySelector(".taskList").style.border = '1px solid black';
+        </script>
+    </div>
+</body>
+</html>
